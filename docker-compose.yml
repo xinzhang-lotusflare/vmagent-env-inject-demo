@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  vm-agent:
+    build:
+      context: .
+      dockerfile: vmagent.dockerfile
+    container_name: vm-agent
+    environment:
+      - URI=aaa
+    volumes:
+      - ./prometheus.yml:/vm-agent/prometheus.yml
+    networks:
+      - the_network
+
+networks:
+  the_network:
+    internal: false
